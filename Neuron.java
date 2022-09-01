@@ -4,8 +4,9 @@ class Neuron {
     double Confidence = 0;
 
     long completeSpeed;
+
     public Neuron( double[][] valArr , double[][] weightArr ) {
-        long start=System.nanoTime();
+        long       start          = System.nanoTime( );
         double[][] weightedValues = new double[ valArr.length ][ weightArr.length ];
         for ( int i = 0 ; i < weightedValues.length ; i++ ) {
             for ( int j = 0 ; j < weightedValues[ i ].length ; j++ ) {
@@ -17,13 +18,14 @@ class Neuron {
                 Confidence += weightedValues[ i ][ j ];
             }
         }
-        completeSpeed=System.nanoTime()-start;
+        completeSpeed = System.nanoTime( ) - start;
     }
-    public double getConfidence()
-    {
+
+    public double getConfidence( ) {
         return Confidence = tanh( Confidence );
     }
-    public String test() {
-        return "Confidence: "+(Confidence = tanh( Confidence ))+"\nTime to complete (nanos): "+completeSpeed;
+
+    public String test( ) {
+        return "Confidence: " + ( Confidence = tanh( Confidence ) ) + "\nTime to complete (nanos): " + completeSpeed;
     }
 }
