@@ -1,5 +1,4 @@
 import java.io.*;
-import java.sql.Array;
 
 
 class FileRead {
