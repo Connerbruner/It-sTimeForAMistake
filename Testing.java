@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 class Testing {
 
@@ -50,10 +52,63 @@ class Testing {
         g2d.setColor(Color.white);
         g2d.fillRect(0, 0, 30, 30);
         g2d.setColor(Color.black);
-        g2d.drawRect((int)(Math.random()*30), (int)(Math.random()*30), (int)(Math.random()*30)-1, (int)(Math.random()*30)-1);
+        int squareX = (int)(Math.random()*28)+2;
+        int squareY = (int)(Math.random()*28)+2;
+        int squareWide = (int)(Math.random()*squareX)+2;
+        int squareTall = (int)(Math.random()*squareY)+2;
+        if(squareWide > 30){
+          squareWide -= (squareWide%30)+1;
+        }
+        if(squareTall > 30){
+          squareTall -= (squareTall%30)+1;
+        }
+        
+        g2d.drawRect(squareX, squareY, squareWide, squareTall);
         return bufferedImage;
     }
+    public static void massTrainOval(int count,String path) {
+        int width = 30;
+        int height = 30;
+
+        for (int i=0; i<count; i++) {
+            try {
+                ImageIO.write(Oval(), "bmp", new File(path+"/"+i+".bmp"));
+            } catch (IOException e) {
+
+            }
+        }
+    }
+    public static BufferedImage Oval() {
+        BufferedImage bufferedImage = new BufferedImage(30, 30, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = bufferedImage.createGraphics();
+        g2d.setColor(Color.white);
+        g2d.fillRect(0, 0, 30, 30);
+        g2d.setColor(Color.black);
+        int squareX = (int)(Math.random()*28)+2;
+        int squareY = (int)(Math.random()*28)+2;
+        int squareWide = (int)(Math.random()*squareX)+2;
+        int squareTall = (int)(Math.random()*squareY)+2;
+        if(squareWide > 30){
+          squareWide -= (squareWide%30)+1;
+        }
+        if(squareTall > 30){
+          squareTall -= (squareTall%30)+1;
+        }
+        
+        g2d.drawOval(squareX, squareY, squareWide, squareTall);
+        return bufferedImage;
+    }
+    public static void findAllFilesInFolder(File folder) {
+		for (File file : folder.listFiles()) {
+			if (!file.isDirectory()) {
+				System.out.println(file.getName());
+			} else {
+				findAllFilesInFolder(file);
+			}
+		}
+	}
 
 
+  
 
 }
