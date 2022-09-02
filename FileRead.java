@@ -5,7 +5,7 @@ import java.sql.Array;
 class FileRead {
     Runtime run = Runtime.getRuntime();
 
-    public static void Edit(String filePath, Double[][] arr) {
+    public static void Edit(String filePath, double[] arr) {
         File fileToBeModified = new File(filePath);
         FileWriter writer = null;
         try {
